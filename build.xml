@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Painter" basedir="." default="build-all">
+    
+    <property name="dist" location="dist"/>
+
+    <target name="libcompile-clean">
+        <ant dir="PainterTestInterfaces" target="clean" />
+    </target>
+
+    <target name="libcompile-dist">
+        <ant dir="PainterTestInterfaces" target="dist" />
+    </target>
+
+    <target name="main-clean">
+        <ant dir="PainterTest" target="clean" />
+    </target>
+
+    <target name="main-dist" depends="libcompile-dist">
+        <ant dir="PainterTest" target="dist" />
+    </target>
+
+    <target name="colorplugin-clean">
+        <ant dir="ColorPlugin1" target="clean" />
+        <ant dir="ColorPlugin2" target="clean" />
+    </target>
+
+    <target name="colorplugin-dist" depends="libcompile-dist">
+        <ant dir="ColorPlugin1" target="dist" />
+        <ant dir="ColorPlugin2" target="dist" />
+    </target>
+
+    <target name="toolplugin-clean">
+        <ant dir="ToolPlugin1" target="clean" />
+        <ant dir="ToolPlugin2" target="clean" />
+    </target>
+
+    <target name="toolplugin-dist" depends="libcompile-dist">
+        <ant dir="ToolPlugin1" target="dist" />
+        <ant dir="ToolPlugin2" target="dist" />
+    </target>
+
+    <target name="clean-all" depends="libcompile-clean, main-clean, colorplugin-clean, toolplugin-clean">
+        <delete dir="${dist}"/>
+    </target>
+
+    <target name="build-all" depends="libcompile-dist, main-dist, colorplugin-dist, toolplugin-dist" />
+
+    <target name="rebuild-all" depends="clean-all, build-all" />
+
+</project>
