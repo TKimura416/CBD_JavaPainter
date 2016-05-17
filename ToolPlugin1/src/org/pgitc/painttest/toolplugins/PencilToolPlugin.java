@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import org.pgitc.painttest.PanelInterface;
+import org.pgitc.painttest.AbsImageWorkspace;
 import org.pgitc.painttest.PluginInterface;
 
 public class PencilToolPlugin implements PluginInterface {
@@ -18,7 +18,7 @@ public class PencilToolPlugin implements PluginInterface {
     //these are gonna hold our mouse coordinates
 
     @Override
-    public void processImage(PanelInterface pad) {
+    public void processImage(AbsImageWorkspace pad) {
         pad.removeAllMouseListeners();
         
         pad.addMouseListener(new MouseAdapter() {
