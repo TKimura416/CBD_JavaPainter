@@ -1,4 +1,4 @@
-<project name="ToolPlugin1" default="dist" basedir=".">
+<project name="ColorToolboxPlugin" default="dist" basedir=".">
   <description>
     simple example build file
   </description>
@@ -32,15 +32,15 @@
   <target name="dist" depends="compile"
         description="generate the distribution">
     <!-- Create the distribution directory -->
-    <mkdir dir="${dist}/plugins/Tools"/>
+    <mkdir dir="${dist}/plugins/ColorToolbox"/>
 
-    <jar jarfile="${dist}/plugins/Tools/${ant.project.name}.jar" basedir="${build}"/>
+    <jar jarfile="${dist}/plugins/ColorToolbox/${ant.project.name}.jar" basedir="${build}"/>
   </target>
 
   <target name="clean"
         description="clean up">
     <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${build}"/>
-    <delete file="${dist}/plugins/Tools/${ant.project.name}.jar"/>
+    <delete file="${dist}/plugins/ColorToolbox/${ant.project.name}.jar"/>
   </target>
 </project>

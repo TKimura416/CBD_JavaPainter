@@ -25,6 +25,7 @@ public class PluginClassLoader extends ClassLoader {
 
     /**
      * The constructor. Just initialize the directory
+     *
      * @param dir
      */
     public PluginClassLoader(File dir) {
@@ -33,8 +34,9 @@ public class PluginClassLoader extends ClassLoader {
 
     /**
      * A convenience method that calls the 2-argument form of this method
-     * @return 
-     * @throws java.lang.ClassNotFoundException 
+     *
+     * @return
+     * @throws java.lang.ClassNotFoundException
      */
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
@@ -49,18 +51,19 @@ public class PluginClassLoader extends ClassLoader {
      * superclass. Because of this second step, this method may be called to
      * load superclasses that are system classes, and it must take this into
      * account.
+     *
      * @param classname
-     * @return 
+     * @return
      * @throws java.lang.ClassNotFoundException
      */
     @Override
     public Class<?> loadClass(String classname, boolean resolve) throws ClassNotFoundException {
         try {
-        // Our ClassLoader superclass has a built-in cache of classes it has
+            // Our ClassLoader superclass has a built-in cache of classes it has
             // already loaded. So, first check the cache.
             Class<?> c = findLoadedClass(classname);
 
-        // After this method loads a class, it will be called again to
+            // After this method loads a class, it will be called again to
             // load the superclasses. Since these may be system classes, we've
             // got to be able to load those too. So try to load the class as
             // a system class (i.e. from the CLASSPATH) and ignore any errors
@@ -71,7 +74,7 @@ public class PluginClassLoader extends ClassLoader {
                 }
             }
 
-        // If the class wasn't found by either of the above attempts, then
+            // If the class wasn't found by either of the above attempts, then
             // try to load it from a file in (or beneath) the directory
             // specified when this ClassLoader object was created. Form the
             // filename by replacing all dots in the class name with
@@ -80,11 +83,11 @@ public class PluginClassLoader extends ClassLoader {
                 // Figure out the filename
                 String filename = classname.replace('.', File.separatorChar) + ".class";
 
-          // Create a File object. Interpret the filename relative to the
+                // Create a File object. Interpret the filename relative to the
                 // directory specified for this ClassLoader.
                 File f = new File(directory, filename);
 
-          // Get the length of the class file, allocate an array of bytes for
+                // Get the length of the class file, allocate an array of bytes for
                 // it, and read it in all at once.
                 int length = (int) f.length();
                 byte[] classbytes = new byte[length];

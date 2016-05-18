@@ -1,24 +1,32 @@
-package org.pgitc.painttest.toolplugins;
+package org.pgitc.painttest.plugins;
 
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import javax.swing.JToggleButton;
 import org.pgitc.painttest.AbsImageWorkspace;
-import org.pgitc.painttest.PluginInterface;
 
-public class PencilToolPlugin implements PluginInterface {
+public class PencilButton extends JToggleButton implements ActionListener{
 
-    @Override
-    public String getPluginName() {
-        return "Pencil";
+    AbsImageWorkspace pad;
+
+    public PencilButton(String text, AbsImageWorkspace pad) {
+        super(text);
+        
+        this.pad = pad;
+        
+        setFocusPainted(false);
+        this.addActionListener(this);
     }
 
     int currentX, currentY, oldX, oldY;
     //these are gonna hold our mouse coordinates
 
     @Override
-    public void processImage(AbsImageWorkspace pad) {
+    public void actionPerformed(ActionEvent e) {
         pad.removeAllMouseListeners();
         
         pad.addMouseListener(new MouseAdapter() {
