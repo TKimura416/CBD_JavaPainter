@@ -6,6 +6,7 @@
   <property name="src" location="src"/>
   <property name="build" location="build"/>
   <property name="dist" location="../dist"/>
+  <property name="dist_dir" value="${dist}/plugins/DrawToolbox"/>
 
     <!-- Paths -->
     <path id="classpath">
@@ -32,15 +33,16 @@
   <target name="dist" depends="compile"
         description="generate the distribution">
     <!-- Create the distribution directory -->
-    <mkdir dir="${dist}/plugins/DrawToolbox"/>
+    <mkdir dir="${dist_dir}"/>
 
-    <jar jarfile="${dist}/plugins/DrawToolbox/${ant.project.name}.jar" basedir="${build}"/>
+    <jar jarfile="${dist_dir}/${ant.project.name}.jar" basedir="${build}"/>
+	<copy file="attr.properties" todir="${dist_dir}"/>
   </target>
 
   <target name="clean"
         description="clean up">
     <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${build}"/>
-    <delete file="${dist}/plugins/DrawToolbox/${ant.project.name}.jar"/>
+    <delete file="${dist_dir}/${ant.project.name}.jar"/>
   </target>
 </project>
