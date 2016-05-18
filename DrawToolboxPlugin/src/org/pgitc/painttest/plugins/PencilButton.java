@@ -25,8 +25,6 @@ public class PencilButton extends JToggleButton implements ActionListener{
     int currentX, currentY, oldX, oldY;
     //these are gonna hold our mouse coordinates
 
-    
-    
     @Override
     public void actionPerformed(ActionEvent e) {
         pad.removeAllMouseListeners();

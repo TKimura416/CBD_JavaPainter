@@ -48,9 +48,9 @@ public class ColorToolbar extends AbsToolbar {
         setName("ColorToolbar");
         
         ButtonGroup group = new ButtonGroup();
-        AbstractButton blackAction = new BlackColorButton(pad);
-        add(blackAction);
-        group.add(blackAction);
+        AbstractButton blackColorAction = new BlackColorButton(pad);
+        add(blackColorAction);
+        group.add(blackColorAction);
         
         AbstractButton blueColorAction = new BlueColorButton(pad);
         add(blueColorAction);
@@ -67,6 +67,8 @@ public class ColorToolbar extends AbsToolbar {
         AbstractButton magentaColorAction = new MagentaColorButton(pad);
         add(magentaColorAction);
         group.add(magentaColorAction);
+        
+        blackColorAction.doClick();
     }
 
     @Override

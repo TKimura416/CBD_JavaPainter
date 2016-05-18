@@ -35,7 +35,7 @@ public class DrawToolbar extends AbsToolbar {
     ArrayList<String> widthList = new ArrayList<String>();
     
     public DrawToolbar() {
-        for (int i = 0 ; i < 10 ; i ++)
+        for (int i = 1 ; i < 10 ; i ++)
             widthList.add(String.valueOf(i));
 
         Properties p = new Properties();
@@ -69,24 +69,22 @@ public class DrawToolbar extends AbsToolbar {
         AbstractButton rectAction = new RectButton("Rect", pad);
         add(rectAction);
         group.add(rectAction);
+        
+        penAction.doClick();
 
         addSeparator();
         
         JComboBox combo = new JComboBox(widthList.toArray());
-        combo.setSelectedIndex(widthList.indexOf(String.valueOf(width)));
         combo.addActionListener((ActionEvent e) -> {
             try {
                 int offset = ((JComboBox) e.getSource()).getSelectedIndex();
                 
-                Graphics2D graphics2D = pad.getGraphics2D();
-
-                graphics2D.setStroke(new BasicStroke(Integer.valueOf(widthList.get(offset))));
-                
-                pad.repaint();
+                pad.setPenWidth(Integer.valueOf(widthList.get(offset)));
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         });
+        combo.setSelectedIndex(widthList.indexOf(String.valueOf(width)));
         add(combo);
     }
 

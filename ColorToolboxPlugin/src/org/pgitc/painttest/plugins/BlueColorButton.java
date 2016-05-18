@@ -25,15 +25,9 @@ public class BlueColorButton extends JToggleButton implements ActionListener {
         setFocusPainted(false);
         this.addActionListener(this);
     }
-
+    
+    @Override
     public void actionPerformed(ActionEvent e) {
-        
-        Graphics2D graphics2D = pad.getGraphics2D();
-        
-        graphics2D.setPaint(color);
-        pad.repaint();
-//            try { pane.getStyledDocument(  ).insertString(0, 
-//                  "Action [" + getValue(NAME) + "] performed!\n", null);
-//            } catch (Exception ex) { ex.printStackTrace(  ); }
+        pad.setPenColor(color);
     }
 }
