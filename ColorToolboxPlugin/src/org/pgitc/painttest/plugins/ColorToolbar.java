@@ -21,23 +21,23 @@ public class ColorToolbar extends AbsToolbar {
         setName("ColorToolbar");
         
         ButtonGroup group = new ButtonGroup();
-        AbstractButton blackAction = new BlackColorButton("Black", pad);
+        AbstractButton blackAction = new BlackColorButton(pad);
         this.add(blackAction);
         group.add(blackAction);
         
-        AbstractButton blueColorAction = new BlueColorButton("Blue", pad);
+        AbstractButton blueColorAction = new BlueColorButton(pad);
         this.add(blueColorAction);
         group.add(blueColorAction);
         
-        AbstractButton greenColorAction = new GreenColorButton("Green", pad);
+        AbstractButton greenColorAction = new GreenColorButton(pad);
         this.add(greenColorAction);
         group.add(greenColorAction);
         
-        AbstractButton redColorAction = new RedColorButton("Red", pad);
+        AbstractButton redColorAction = new RedColorButton(pad);
         this.add(redColorAction);
         group.add(redColorAction);
         
-        AbstractButton magentaColorAction = new MagentaColorButton("Magenta", pad);
+        AbstractButton magentaColorAction = new MagentaColorButton(pad);
         this.add(magentaColorAction);
         group.add(magentaColorAction);
     }
