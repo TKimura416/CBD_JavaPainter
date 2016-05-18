@@ -14,14 +14,14 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelListener;
 
-public class Workspace extends AbsImageWorkspace{
+public class Workspace extends AbsImageWorkspace {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -3389679010006873237L;
-	
-	Image image;
+     *
+     */
+    private static final long serialVersionUID = -3389679010006873237L;
+
+    Image image;
     //this is gonna be your image that you draw on
     Graphics2D graphics2D;
     //this is what we'll be using to draw on
@@ -48,32 +48,32 @@ public class Workspace extends AbsImageWorkspace{
     //sets the rendering
     //runs the clear() method
     //then it draws the image
-    
+
     public void clear() {
         graphics2D.setPaint(Color.white);
         graphics2D.fillRect(0, 0, getSize().width, getSize().height);
         graphics2D.setPaint(Color.black);
         repaint();
     }
-    
+
     @Override
     public void removeAllMouseListeners() {
         MouseListener[] mouseListeners = getMouseListeners();
         for (MouseListener mouseListener : mouseListeners) {
             removeMouseListener(mouseListener);
         }
-        
+
         MouseMotionListener[] mouseMotionListeners = getMouseMotionListeners();
         for (MouseMotionListener mouseMotionListener : mouseMotionListeners) {
             removeMouseMotionListener(mouseMotionListener);
         }
-        
+
         MouseWheelListener[] mouseWheelListeners = getMouseWheelListeners();
         for (MouseWheelListener mouseWheelListener : mouseWheelListeners) {
             removeMouseWheelListener(mouseWheelListener);
         }
     }
-    
+
     /**
      *
      * @return
