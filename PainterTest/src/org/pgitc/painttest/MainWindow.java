@@ -54,39 +54,41 @@ public class MainWindow extends JFrame {
         //sets the size of the frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-public static void decorateButton(final AbstractButton button) {
-    Dimension BUTTON_SIZE = new Dimension(50, 80);
-    button.putClientProperty("hideActionText", Boolean.TRUE);
-    button.setBorder(BorderFactory.createEmptyBorder());
-    button.setBackground(null);
-    button.setOpaque(true);
-    button.setPreferredSize(BUTTON_SIZE);
-    button.setMaximumSize(BUTTON_SIZE);
-    button.setMinimumSize(BUTTON_SIZE);
-    button.addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseReleased(MouseEvent e) {
+
+    public static void decorateButton(final AbstractButton button) {
+        Dimension BUTTON_SIZE = new Dimension(50, 80);
+        button.putClientProperty("hideActionText", Boolean.TRUE);
+        button.setBorder(BorderFactory.createEmptyBorder());
+        button.setBackground(null);
+        button.setOpaque(true);
+        button.setPreferredSize(BUTTON_SIZE);
+        button.setMaximumSize(BUTTON_SIZE);
+        button.setMinimumSize(BUTTON_SIZE);
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
 //            button.setBackground(COLOR_BUTTON_MOUSEOVER);
-        }
+            }
 
-        @Override
-        public void mousePressed(MouseEvent e) {
+            @Override
+            public void mousePressed(MouseEvent e) {
 //            button.setBackground(COLOR_BUTTON_PRESSED);
-        }
+            }
 
-        @Override
-        public void mouseEntered(MouseEvent e) {
+            @Override
+            public void mouseEntered(MouseEvent e) {
 //            button.setBorder(button.isEnabled() ? BORDER_BUTTON_MOUSEOVER_ENABLED : BORDER_BUTTON_MOUSEOVER_DISABLED);
 //            button.setBackground(COLOR_BUTTON_MOUSEOVER);
-        }
+            }
 
-        @Override
-        public void mouseExited(MouseEvent e) {
-            button.setBorder(BorderFactory.createEmptyBorder());
-            button.setBackground(null);
-        }
-    });
-}
+            @Override
+            public void mouseExited(MouseEvent e) {
+                button.setBorder(BorderFactory.createEmptyBorder());
+                button.setBackground(null);
+            }
+        });
+    }
+
     private void loadToolbar() {
 
         String pluginsDir = "plugins";
@@ -98,7 +100,7 @@ public static void decorateButton(final AbstractButton button) {
         if (!pluginDir.exists()) {
             return;
         }
-                File[] directories = pluginDir.listFiles((File file) -> file.isDirectory());
+        File[] directories = pluginDir.listFiles((File file) -> file.isDirectory());
         cl = new PluginJarLoader(pluginDir.getPath());
         for (File directory : directories) {
             if (directory.exists() && directory.isDirectory()) {
@@ -124,16 +126,16 @@ public static void decorateButton(final AbstractButton button) {
                                 Class<?> c = cl.loadClass(className);
                                 Class<?> intf = c.getSuperclass();
 //                                for (Class<?> intf1 : intf) {
-                                    if (intf.getName().contains("AbsToolbar")) {
-                                        try {
-                                            final AbsToolbar toolbar = (AbsToolbar) c.newInstance();
-                                            toolbar.configure(drawPad);
-                                            
-                                            getContentPane().add(toolbar, BorderLayout.NORTH);
-                                        } catch (InstantiationException | IllegalAccessException ex) {
-                                            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-                                        }
+                                if (intf.getName().contains("AbsToolbar")) {
+                                    try {
+                                        final AbsToolbar toolbar = (AbsToolbar) c.newInstance();
+                                        toolbar.configure(drawPad);
+
+                                        getContentPane().add(toolbar, BorderLayout.NORTH);
+                                    } catch (InstantiationException | IllegalAccessException ex) {
+                                        Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
                                     }
+                                }
 //                                }
                             }
                         }
