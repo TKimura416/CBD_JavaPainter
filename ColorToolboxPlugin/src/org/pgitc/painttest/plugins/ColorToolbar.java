@@ -35,7 +35,7 @@ public class ColorToolbar extends AbsToolbar {
             InputStream in = new FileInputStream(new File(propFullPath));
             p.load(in);
             
-            String value = p.getProperty("flotable", "false");
+            String value = p.getProperty("floatable", "false");
             setFloatable(Boolean.valueOf(value));
             
         } catch (IOException ex) {
@@ -49,23 +49,23 @@ public class ColorToolbar extends AbsToolbar {
         
         ButtonGroup group = new ButtonGroup();
         AbstractButton blackAction = new BlackColorButton(pad);
-        this.add(blackAction);
+        add(blackAction);
         group.add(blackAction);
         
         AbstractButton blueColorAction = new BlueColorButton(pad);
-        this.add(blueColorAction);
+        add(blueColorAction);
         group.add(blueColorAction);
         
         AbstractButton greenColorAction = new GreenColorButton(pad);
-        this.add(greenColorAction);
+        add(greenColorAction);
         group.add(greenColorAction);
         
         AbstractButton redColorAction = new RedColorButton(pad);
-        this.add(redColorAction);
+        add(redColorAction);
         group.add(redColorAction);
         
         AbstractButton magentaColorAction = new MagentaColorButton(pad);
-        this.add(magentaColorAction);
+        add(magentaColorAction);
         group.add(magentaColorAction);
     }
 

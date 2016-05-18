@@ -49,7 +49,9 @@ public class MainWindow extends JFrame {
 
         loadToolbar();
 
-//        loadPlugins();
+        if (false)
+            loadPlugins();
+        
         setSize(600, 600);
         //sets the size of the frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
