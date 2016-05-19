@@ -26,7 +26,7 @@ public class PluginClassLoader extends ClassLoader {
     /**
      * The constructor. Just initialize the directory
      *
-     * @param dir
+     * @param dir Dir for plugin load
      */
     public PluginClassLoader(File dir) {
         directory = dir;
@@ -35,8 +35,8 @@ public class PluginClassLoader extends ClassLoader {
     /**
      * A convenience method that calls the 2-argument form of this method
      *
-     * @return
-     * @throws java.lang.ClassNotFoundException
+     * @return Class for that name
+     * @throws java.lang.ClassNotFoundException Throws if class not found
      */
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
@@ -52,9 +52,9 @@ public class PluginClassLoader extends ClassLoader {
      * load superclasses that are system classes, and it must take this into
      * account.
      *
-     * @param classname
-     * @return
-     * @throws java.lang.ClassNotFoundException
+     * @param classname Name for loaded class
+     * @return Class for that name
+     * @throws java.lang.ClassNotFoundException Throws if class not found
      */
     @Override
     public Class<?> loadClass(String classname, boolean resolve) throws ClassNotFoundException {

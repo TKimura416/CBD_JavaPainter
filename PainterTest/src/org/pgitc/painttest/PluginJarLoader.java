@@ -25,8 +25,8 @@ public final class PluginJarLoader extends URLClassLoader {
     /**
      * This version of the constructor is used when ImageJ is launched using
      * Java WebStart.
-     * @param path
-     * @param callSuper
+     * @param path Path for class load
+     * @param callSuper Determine if user super class loader
      */
     public PluginJarLoader(String path, boolean callSuper) {
         super(new URL[0], Thread.currentThread().getContextClassLoader());

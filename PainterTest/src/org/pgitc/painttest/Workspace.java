@@ -82,10 +82,6 @@ public class Workspace extends AbsImageWorkspace {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public Graphics2D getGraphics2D() {
         return graphics2D;
