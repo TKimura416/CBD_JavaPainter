@@ -2,6 +2,7 @@
 <project name="Painter" basedir="." default="build-all">
     
     <property name="dist" location="dist"/>
+    <property name="doc" location="doc"/>
 
     <target name="libcompile-clean">
         <ant dir="PainterTestInterfaces" target="clean" />
@@ -9,6 +10,10 @@
 
     <target name="libcompile-dist">
         <ant dir="PainterTestInterfaces" target="dist" />
+    </target>
+
+    <target name="libcompile-doc">
+        <ant dir="PainterTestInterfaces" target="doc" />
     </target>
 
     <target name="main-clean">
@@ -19,12 +24,20 @@
         <ant dir="PainterTest" target="dist" />
     </target>
 
+    <target name="main-doc" depends="libcompile-doc">
+        <ant dir="PainterTest" target="doc" />
+    </target>
+
     <target name="ColorTool-clean">
         <ant dir="ColorToolboxPlugin" target="clean" />
     </target>
 
     <target name="ColorTool-dist" depends="libcompile-dist">
         <ant dir="ColorToolboxPlugin" target="dist" />
+    </target>
+
+    <target name="ColorTool-doc" depends="libcompile-doc">
+        <ant dir="ColorToolboxPlugin" target="doc" />
     </target>
 
     <target name="DrawTool-clean">
@@ -35,11 +48,18 @@
         <ant dir="DrawToolboxPlugin" target="dist" />
     </target>
 
-    <target name="clean-all" depends="libcompile-clean, main-clean, ColorTool-clean, DrawTool-clean">
-        <delete dir="${dist}"/>
+    <target name="DrawTool-doc" depends="libcompile-doc">
+        <ant dir="DrawToolboxPlugin" target="doc" />
     </target>
 
-    <target name="build-all" depends="libcompile-dist, main-dist, ColorTool-dist, DrawTool-dist" />
+    <target name="clean-all" depends="libcompile-clean, main-clean, ColorTool-clean, DrawTool-clean">
+        <delete dir="${dist}"/>
+        <delete dir="${doc}"/>
+    </target>
+
+    <target name="doc-all" depends="libcompile-dist, libcompile-doc, main-doc, ColorTool-doc, DrawTool-doc" />
+
+    <target name="build-all" depends="libcompile-dist, main-dist, ColorTool-dist, DrawTool-dist, doc-all" />
 
     <target name="rebuild-all" depends="clean-all, build-all" />
 

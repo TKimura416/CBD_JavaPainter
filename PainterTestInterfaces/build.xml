@@ -3,9 +3,10 @@
     simple example build file
   </description>
   <!-- set global properties for this build -->
-  <property name="src" location="src"/>
+  <property name="source.dir" location="src"/>
   <property name="build" location="build"/>
   <property name="dist" location="../dist"/>
+  <property name="doc.dir" value="../doc/PainterTestInterfaces"/>
 
   <presetdef name="javac">
     <javac includeantruntime="false" />
@@ -16,12 +17,17 @@
     <tstamp/>
     <!-- Create the build directory structure used by compile -->
     <mkdir dir="${build}"/>
+    <mkdir dir="${doc.dir}"/>
   </target>
 
   <target name="compile" depends="init"
         description="compile the source">
-    <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}"/>
+    <!-- Compile the java code from ${source.dir} into ${build} -->
+    <javac srcdir="${source.dir}" destdir="${build}"/>
+  </target>
+
+  <target name="doc" depends="init" description="generate documentation">
+    <javadoc sourcepath="${source.dir}" destdir="${doc.dir}"/>
   </target>
 
   <target name="dist" depends="compile"
@@ -36,6 +42,7 @@
         description="clean up">
     <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${build}"/>
+    <delete dir="${doc.dir}"/>
     <delete file="${dist}/lib/${ant.project.name}.jar"/>
   </target>
 </project>
