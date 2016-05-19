@@ -28,6 +28,11 @@ import org.pgitc.painttest.AbsToolbar;
  */
 public class DrawToolbar extends AbsToolbar {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 2719884230307829998L;
+
     public static final String PROP_FILE_NAME = "attr.properties";
     
     int width = 1;
@@ -74,7 +79,7 @@ public class DrawToolbar extends AbsToolbar {
 
         addSeparator();
         
-        JComboBox combo = new JComboBox(widthList.toArray());
+        JComboBox<String> combo = new JComboBox<>((String[])widthList.toArray());
         combo.addActionListener((ActionEvent e) -> {
             try {
                 int offset = ((JComboBox) e.getSource()).getSelectedIndex();

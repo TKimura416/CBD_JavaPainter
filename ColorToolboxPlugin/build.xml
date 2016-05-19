@@ -8,10 +8,14 @@
   <property name="dist" location="../dist"/>
   <property name="dist_dir" value="${dist}/plugins/ColorToolbox"/>
 
-    <!-- Paths -->
-    <path id="classpath">
-        <fileset dir="../dist/lib" includes="**/*.jar"/>
-    </path>
+  <!-- Paths -->
+  <path id="classpath">
+    <fileset dir="../dist/lib" includes="**/*.jar"/>
+  </path>
+
+  <presetdef name="javac">
+    <javac includeantruntime="false" />
+  </presetdef>
 
   <target name="init">
     <!-- Create the time stamp -->

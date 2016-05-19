@@ -7,10 +7,14 @@
   <property name="build" location="build"/>
   <property name="dist" location="../dist"/>
 
-    <!-- Paths -->
-    <path id="classpath">
-        <fileset dir="../dist/lib" includes="**/*.jar"/>
-    </path>
+  <!-- Paths -->
+  <path id="classpath">
+    <fileset dir="../dist/lib" includes="**/*.jar"/>
+  </path>
+
+  <presetdef name="javac">
+    <javac includeantruntime="false" />
+  </presetdef>
 
   <target name="init">
     <!-- Create the time stamp -->

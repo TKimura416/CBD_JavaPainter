@@ -10,6 +10,11 @@ import org.pgitc.painttest.AbsImageWorkspace;
 
 public class RectButton extends JToggleButton implements ActionListener{
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 2719884230307830000L;
+
     AbsImageWorkspace pad;
 
     public RectButton(String text, AbsImageWorkspace pad) {

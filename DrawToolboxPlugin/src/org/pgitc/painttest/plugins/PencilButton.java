@@ -11,6 +11,11 @@ import org.pgitc.painttest.AbsImageWorkspace;
 
 public class PencilButton extends JToggleButton implements ActionListener{
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 2719884230307829999L;
+
     AbsImageWorkspace pad;
 
     public PencilButton(String text, AbsImageWorkspace pad) {

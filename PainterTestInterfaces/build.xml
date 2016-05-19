@@ -7,6 +7,10 @@
   <property name="build" location="build"/>
   <property name="dist" location="../dist"/>
 
+  <presetdef name="javac">
+    <javac includeantruntime="false" />
+  </presetdef>
+
   <target name="init">
     <!-- Create the time stamp -->
     <tstamp/>
